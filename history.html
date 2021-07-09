@@ -1,0 +1,199 @@
+    1  vi /etc/hosts
+    2  ssh node1
+    3  free -m 
+    4  getenforce 
+    5  modprobe br_netfilter
+    6  echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+    7  cat  <<EOF  >/etc/yum.repos.d/kube.repo
+    8  [kube]
+    9  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+   10  gpgcheck=0
+   11  EOF
+   12  yum install docker kubelet kubectl kubeadm -y 
+   13  systemctl enable --now docker kubelet
+   14  kubeadm init --pod-network-cidr=192.168.0.0/16  --apiserver-advertise-address=0.0.0.0   --apiserver-cert-extra-sans=3.108.233.131
+   15  pwd
+   16  mkdir .kube
+   17   cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   18  kubectl get nodes
+   19  kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+   20  kubectl get nodes -w
+   21  kubectl get nodes 
+   22  cd .kube
+   23  ls
+   24  vim config
+   25  cp config   /root/
+   26  vim /root/config 
+   27  cd
+   28  kubectl get nodes --kubeconfig config 
+   29  wget
+   30  yum install httpd -y ; cp config /var/www/html/   ;  systemctl start httpd 
+   31  mv /var/www/html/config   /var/www/html/config.html
+   32  chmod  777 /var/www/html/ -R
+   33  wget 3.108.233.131/config.html
+   34  ls
+   35  cat config
+   36  history 
+   37  yumdownloader  kubectl 
+   38  ls
+   39  cp 1ba3630f32f36700d00afc381e9b86663d4f549d24429984743090c10d853c35-kubectl-1.21.2-0.x86_64.rpm   /var/www/html/
+   40  kubectl get nodes
+   41  history 
+   42  getenforce 
+   43  hostnamectl set-hostname master
+   44  bash
+   45  cdls
+   46  ls
+   47  cd
+   48  ls
+   49  cat config
+   50  kubectl get nodes
+   51  kubectl get nodes --kubeconfig  config
+   52  ssh ec2-user@3.17.211.151
+   53  scp config  ec2-user@3.17.211.151:/tmp/config 
+   54  ssh ec2-user@3.17.211.151
+   55  ls
+   56  kubectl get nodes
+   57  hostname
+   58  ls
+   59  ls -l 
+   60  kubectl get nodes
+   61  kubectl ls
+   62  kubectl run tavant --image=quay.io/mayank123modi/mynginx 
+   63  kubectl get pods
+   64  kubectl get pods -o wide
+   65  kubectl describe pod tavant 
+   66  kubectl get oids
+   67  kubectl get pods
+   68  kubectl get pods -o wide
+   69  kubectl  get pods
+   70  kubectl  get pods --show-labels 
+   71  history 
+   72  ls
+   73  mkdir code
+   74  ls
+   75  cd code
+   76  ls
+   77  vim pod.yaml 
+   78  kubectl api-resources  | grep -i pod 
+   79  kubectl api-resources  | grep -i replicasets
+   80  vim pod.yaml 
+   81  docker search nginx 
+   82  docker pull docker.io/library/nginx
+   83  vim pod.yaml 
+   84  ls
+   85  kubectl  create  -f pod.yaml 
+   86  kubectl get pods
+   87  kubectl get pods -o wide
+   88  kubectl describe  pod test1
+   89  kubectl get pods -o wide
+   90  curl   192.168.166.130
+   91  cp pod.yaml pod2.yaml 
+   92  vim pod2.yaml 
+   93  kubectl create  -f pod2.yaml 
+   94  kubectl get pods
+   95  kubectl get nodes
+   96  kubectl get pods -o wide
+   97  kubectl get pods  --show-labels 
+   98  kubectl get pods  --selector tavant=mayank 
+   99  kubectl get pods  --selector tavant=kubernetes
+  100  history 
+  101  ls
+  102  vim rs.yaml 
+  103  git
+  104  yum install git -y
+  105  git clone https://github.com/mdhack0316/tavantkubernetes
+  106  ls
+  107  mv po* tavantkubernetes/
+  108  cd tavantkubernetes/
+  109  ls
+  110  vim rs.yaml 
+  111  vi rs.yaml 
+  112  kubectl create  -f rs.yaml 
+  113  vim rs.yaml 
+  114  cat rs.yaml 
+  115  kubectl create  -f rs.yaml 
+  116  kubectl get rs
+  117  kubectl get pods
+  118  kubectl delete  pod  tavant --force 
+  119  kubectl get pods
+  120  kubectl delete  pod myrs-7ztql  --force 
+  121  kubectl get pods
+  122  kubectl get all
+  123  kubectl delete  pod myrs-mmrwq   --force 
+  124  kubectl get all
+  125  kubectl delete rs myrs 
+  126  kubectl get all
+  127  history 
+  128  ls
+  129  git add . 
+  130  git commit -m "Day4" . 
+  131  git config --global user.email "mayank123modi@gmail.com"
+  132  git config --global user.name  "Mayank Modi"
+  133  git push 
+  134  git add . 
+  135  git commit -m "Day4" . 
+  136  git push 
+  137  kubectl get pods
+  138  vim rs.yaml 
+  139  kubectl explain  pod.spec
+  140  vim rs.yaml 
+  141  history 
+  142  kubectl get pods
+  143  yum install bash-completion  -y
+  144  kubectl completion bash > /etc/bash_completion.d/kubectl 
+  145  bash
+  146  kubectl get nodes
+  147  cd /tmp
+  148  ls
+  149  kubectl get pods
+  150  kubectl get nodes
+  151  kubectl get all 
+  152  kubectl delete  all --all
+  153  kubectl get pods
+  154  kubectl create  deployment  webapp --image=quay.io/mayank123modi/myserver 
+  155  kubectl get deployments.apps 
+  156  kubectl get pods
+  157  kubectl get all
+  158  kubectl describe deployments.apps  webapp
+  159  kubectl describe rs webapp-c6b7d894c 
+  160  kubectl describe  pod webapp-c6b7d894c-7jnkg 
+  161  kubectl get all
+  162  kubectl get pods -o wide
+  163  curl 192.168.104.23
+  164  history 
+  165  ls
+  166  cd code/
+  167  ls
+  168  cd tavantkubernetes/
+  169  lks
+  170  ls
+  171  history   > history.html 
+  172  ls
+  173  kubectl create  deployment  webapp --image=quay.io/mayank123modi/myserver   --dry-run 
+  174  kubectl create  deployment  webapp --image=quay.io/mayank123modi/myserver   --dry-run   -o json 
+  175  kubectl create  deployment  webapp --image=quay.io/mayank123modi/myserver   --dry-run   -o yaml 
+  176  kubectl create  deployment  webapp --image=quay.io/mayank123modi/myserver   --dry-run   -o yaml  >  deployment.yaml 
+  177  vim deployment.yaml 
+  178  kubectl get deployments.apps 
+  179  vim deployment.yaml 
+  180  kubectl create -f deployment.yaml 
+  181  kubectl get deployments.apps 
+  182  kubectl get pods
+  183  kubectl get pods -o wide
+  184  kubectl get pods
+  185  kubectl get all
+  186  vim deployment.yaml 
+  187  kubectl delete deployments.apps myapp 
+  188  kubectl create -f deployment.yaml 
+  189  kubectl get all 
+  190  ls
+  191  history 
+  192  kubectl get deployments.apps 
+  193  kubectl get deployments.apps  --show-labels 
+  194  kubectl edit deployments.apps webapp 
+  195  kubectl get deployments.apps  --show-labels 
+  196  kubectl delete  deployments.apps  webapp 
+  197  kubectl get all
+  198  history 
+  199  history  > history.html 

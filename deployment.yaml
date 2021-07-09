@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webap
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webap
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webap
+    spec:
+      containers:
+      - image: quay.io/mayank123modi/myserver
+        name: myserver
+        resources: {}
+status: {}
